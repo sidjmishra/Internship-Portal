@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: Sep 18, 2019 at 02:20 PM
--- Server version: 5.7.25
--- PHP Version: 7.3.1
+-- Host: 127.0.0.1
+-- Generation Time: Dec 05, 2020 at 12:04 AM
+-- Server version: 10.1.32-MariaDB
+-- PHP Version: 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -39,8 +41,7 @@ CREATE TABLE `address` (
 --
 
 INSERT INTO `address` (`id`, `student_id`, `address`, `address2`, `pincode`) VALUES
-(1, 1, 'Mumbai', 'Maharashtra', 400052),
-(2, 2, 'Mumbai', 'Maharashtra', 400055);
+(3, 3, 'Kinjal Building - 36/303, Shanti Nagar\r\nSector - 1, Mira Road(East).', 'Thane. Maharashtra', 401107);
 
 -- --------------------------------------------------------
 
@@ -55,15 +56,6 @@ CREATE TABLE `applied_internships` (
   `applied_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `application_status` varchar(20) NOT NULL DEFAULT 'Applied'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `applied_internships`
---
-
-INSERT INTO `applied_internships` (`id`, `student_id`, `internship_id`, `applied_on`, `application_status`) VALUES
-(1, 1, 1, '2019-09-18 13:17:44', 'Applied'),
-(2, 1, 2, '2019-09-18 15:45:19', 'Applied'),
-(3, 2, 2, '2019-09-18 18:17:12', 'Shortlisted');
 
 -- --------------------------------------------------------
 
@@ -108,10 +100,29 @@ CREATE TABLE `employers` (
 -- Dumping data for table `employers`
 --
 
--- Add to database
 INSERT INTO `employers` (`id`, `first_name`, `last_name`, `email_id`, `password`, `company_name`, `company_url`, `mobile`, `about`, `created_at`) VALUES
-(1, 'Mahmood Hussain', 'Bhat', 'mahmoodbhat3135@gmail.com', '$2y$10$vRhugcPjv8YQNEUbKGnZH.FBSOLCPbUiLsy.crd35bfpQQwr3Jtmu', 'Demo IT Solutions', 'http://www.mahmoodhussain.in', '7780859899', 'Demo IT Solutions provide awesome services.', '2019-09-18 09:58:51'),
-(2, 'Kumail Husssain', 'Mir', 'kumailmir56@gmail.com', '$2y$10$OCnsgfr4QB13Rxp2EvZ5eeRK8uUFDb8ne/oZ9wItuOPnw..QUIcD2', 'Quantum Technologies', 'http://www.mahmoodhussain.in', '8295227747', 'Quantum Technologies is an Indian multinational technology company that specializes in Internet-related services and products, which include online advertising technologies cloud computing, software, and hardware.', '2019-09-18 11:04:02');
+(3, 'Siddhant', 'Mishra', 'sidjmishra@gmail.com', '$2y$10$d7Rx9fVyUKNZsBNc77fbz.fssWwyZMZ7VOnnsX9UPirNmERdevCfO', 'Tri-Devs', 'https://in.linkedin.com/in/siddhant-mishra-021726181', '9967120351', 'We hire interns and make them work on projects which are being managed by the government. And we give them a great experience in  managing and developing a project which are helpful for future endavours.', '2020-11-30 15:35:12');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `feed_id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `rating` int(11) NOT NULL,
+  `comments` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`feed_id`, `name`, `email`, `rating`, `comments`) VALUES
+(1, 'Siddhant Mishra', 'sidjmishra007@student.sfit.ac.in', 5, 'Great!!');
 
 -- --------------------------------------------------------
 
@@ -206,11 +217,8 @@ CREATE TABLE `internships` (
 -- Dumping data for table `internships`
 --
 
--- Add to database
 INSERT INTO `internships` (`id`, `title`, `start_date`, `end_date`, `posted_by`, `duration`, `stipend`, `duration_week`, `stipend_week`, `about_internship`, `number_of_interns`, `who_can`, `part_time_allowed`, `posted_at`) VALUES
-(1, 'Web Development', '2019-09-18', '2019-09-30', 1, 3, 15000, 0, 0, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga adipisci dolor iste laboriosam eligendi. Rem harum corrupti illo iure necessitatibus. Asperiores, architecto. Eum aut, minus odit libero consequatur distinctio earum.', 2, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga adipisci dolor iste laboriosam eligendi. Rem harum corrupti illo iure necessitatibus. Asperiores, architecto. Eum aut, minus odit libero consequatur distinctio earum.', 0, '2019-09-18 10:21:37'),
-(2, 'Android Development', '2019-09-18', '2019-10-15', 1, 6, 5000, 1, 1, 'Selected intern\'s day-to-day responsibilities include:\r\n\r\n1. Learning and working with the existing Android code\r\n2. Designing, developing, and testing new features on the mobile app', 1, 'Only those candidates can apply who:\r\nare available for full time (in-office) internship\r\nare available for a duration of 6 weeks\r\nhave relevant skills and interests\r\n** Women willing to start/restart their career can also apply.', 0, '2019-09-18 10:55:24'),
-(3, 'Marketing', '2019-09-24', '2019-10-09', 2, 5, 25000, 0, 0, 'Selected intern\'s day-to-day responsibilities include:\r\n\r\n1. Maintaining a good relationship between the client and the company\r\n2. Convincing the clients', 2, 'are available for the part time job/internship\r\ncan start the part time job/internship between 17th Sep\'19 and 17th Oct\'19\r\nare available for duration of 3 months\r\nare from Chennai, Visakhapatnam, Kochi, Bangalore, Bangalore and neighboring cities\r\nhave relevant skills and interests', 0, '2019-09-18 11:18:10');
+(4, 'Flutter Development', '2020-12-06', '2020-12-30', 3, 3, 5000, 0, 0, 'Students who have dedication to work and needs an industrial experience.\r\nStudents who needs a first time internships and have a good knowledge about the application development.\r\nFlexible working hours.', 3, 'Under-Graduate students.\r\nHaving a knowledge about application development.\r\nReady to work for alteast 3-4 days a week.', 1, '2020-11-30 15:40:39');
 
 -- --------------------------------------------------------
 
@@ -228,13 +236,8 @@ CREATE TABLE `internship_locations` (
 -- Dumping data for table `internship_locations`
 --
 
--- Add to database
 INSERT INTO `internship_locations` (`id`, `internship_id`, `location_id`) VALUES
-(1, 1, 446),
-(2, 1, 1321),
-(3, 2, 446),
-(4, 2, 506),
-(5, 3, 446);
+(6, 4, 817);
 
 -- --------------------------------------------------------
 
@@ -253,14 +256,9 @@ CREATE TABLE `internship_perks` (
 --
 
 INSERT INTO `internship_perks` (`id`, `perk_id`, `internship_id`) VALUES
-(1, 1, 1),
-(2, 4, 1),
-(3, 5, 1),
-(4, 1, 2),
-(5, 2, 2),
-(6, 4, 2),
-(7, 4, 3),
-(8, 5, 3);
+(9, 1, 4),
+(10, 3, 4),
+(11, 4, 4);
 
 -- --------------------------------------------------------
 
@@ -1901,14 +1899,10 @@ CREATE TABLE `required_skills` (
 --
 
 INSERT INTO `required_skills` (`id`, `skill_id`, `internship_id`) VALUES
-(1, 4, 1),
-(2, 9, 1),
-(3, 10, 1),
-(4, 13, 1),
-(5, 2, 2),
-(6, 17, 2),
-(7, 24, 2),
-(8, 10, 3);
+(9, 17, 4),
+(10, 19, 4),
+(11, 20, 4),
+(12, 24, 4);
 
 -- --------------------------------------------------------
 
@@ -1973,10 +1967,8 @@ CREATE TABLE `students` (
 -- Dumping data for table `students`
 --
 
--- Add to database 
 INSERT INTO `students` (`id`, `first_name`, `last_name`, `email_id`, `password`, `gender`, `mobile`, `projects`, `created_at`) VALUES
-(1, 'Anupam', 'Sahu', 'anupam@gmail.com', '$2y$10$aFLpfldMgN66e6L.ryixAemNX//RKnTyNoq9Ip55P1H0C0t3AsB7S', 'male', '9876543210', 'I have developed many projects including my portfolio, dashboard etc', '2020-09-18 12:21:08'),
-(2, 'Siddhant', 'Mishra', 'sidjmishra@gmail.com', '$2y$10$NLZ.oa5IKliFIq8nCKUD8eTWinI5JJ2L7ExQSf05hPCk1iEbDEiri', 'male', '9876543210', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus voluptatum ducimus vero odio quasi, laboriosam tempora nesciunt? Suscipit natus amet magnam numquam quas? Eius labore ipsam doloribus nulla cum totam?', '2020-09-18 18:16:45');
+(3, 'Siddhant', 'Mishra', 'sidjmishra007@gmail.com', '$2y$10$m0/b4j9rf9/3h9fhA1z7ve2AHenbCSp6YoDMOETUfJVYEioxoNGfK', 'male', '9876543210', 'Developed a portfolio websites and developed many applications for industry as well as government organization.', '2020-11-30 15:31:59');
 
 -- --------------------------------------------------------
 
@@ -1997,10 +1989,8 @@ CREATE TABLE `student_education` (
 -- Dumping data for table `student_education`
 --
 
--- Add to database
 INSERT INTO `student_education` (`id`, `student_id`, `highest_edu`, `institute`, `percentage`, `institute_state`) VALUES
-(1, 1, 1, 'St. Andrews Institute of tech and management', 80, 6),
-(2, 2, 3, 'Hello World Institute of Tech and Management', 76, 15);
+(3, 3, 2, 'St. Francis Institute of Technology', 90, 21);
 
 -- --------------------------------------------------------
 
@@ -2018,15 +2008,20 @@ CREATE TABLE `student_skills` (
 -- Dumping data for table `student_skills`
 --
 
--- Add to database
 INSERT INTO `student_skills` (`id`, `student_id`, `skill_id`) VALUES
-(1, 1, 4),
-(2, 1, 9),
-(3, 1, 10),
-(4, 1, 12),
-(5, 2, 5),
-(6, 2, 6),
-(7, 2, 16);
+(8, 3, 1),
+(9, 3, 2),
+(10, 3, 4),
+(11, 3, 7),
+(12, 3, 8),
+(13, 3, 9),
+(14, 3, 10),
+(15, 3, 12),
+(16, 3, 17),
+(17, 3, 19),
+(18, 3, 20),
+(19, 3, 23),
+(20, 3, 24);
 
 --
 -- Indexes for dumped tables
@@ -2060,6 +2055,12 @@ ALTER TABLE `employers`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email_id` (`email_id`),
   ADD UNIQUE KEY `mobile` (`mobile`);
+
+--
+-- Indexes for table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`feed_id`);
 
 --
 -- Indexes for table `indian_states`
@@ -2154,13 +2155,13 @@ ALTER TABLE `student_skills`
 -- AUTO_INCREMENT for table `address`
 --
 ALTER TABLE `address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `applied_internships`
 --
 ALTER TABLE `applied_internships`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `education`
@@ -2172,7 +2173,13 @@ ALTER TABLE `education`
 -- AUTO_INCREMENT for table `employers`
 --
 ALTER TABLE `employers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `feedback`
+--
+ALTER TABLE `feedback`
+  MODIFY `feed_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `indian_states`
@@ -2190,19 +2197,19 @@ ALTER TABLE `institutions`
 -- AUTO_INCREMENT for table `internships`
 --
 ALTER TABLE `internships`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `internship_locations`
 --
 ALTER TABLE `internship_locations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `internship_perks`
 --
 ALTER TABLE `internship_perks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `locations`
@@ -2220,7 +2227,7 @@ ALTER TABLE `perks`
 -- AUTO_INCREMENT for table `required_skills`
 --
 ALTER TABLE `required_skills`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `skills`
@@ -2232,19 +2239,19 @@ ALTER TABLE `skills`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `student_education`
 --
 ALTER TABLE `student_education`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `student_skills`
 --
 ALTER TABLE `student_skills`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Constraints for dumped tables
@@ -2304,6 +2311,7 @@ ALTER TABLE `student_education`
 ALTER TABLE `student_skills`
   ADD CONSTRAINT `student_skills_ibfk_1` FOREIGN KEY (`skill_id`) REFERENCES `skills` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `student_skills_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

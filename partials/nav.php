@@ -63,6 +63,10 @@
         <a class="dropdown-item" href="employer-registration.php">Register as Employer</a>
       </div>
     </li>';
+
+    echo '<li class="nav-item active">
+        <a class="nav-link" href="feedback.php">Feedback<span class="sr-only">(current)</span></a>
+      </li>';
       }
       ?>
     </ul>

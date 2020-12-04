@@ -4,6 +4,16 @@
             <div class="col-12 col-md">
                 <span>Intern-Connect</span>
                 <small class="d-block mb-3 text-muted">&copy; 2020</small>
+                <h5>Website Rating</h5>
+                <?php
+                    $sql = "SELECT CAST(AVG(rating) AS DECIMAL(10, 1)) as rating FROM feedback";
+                    $query = mysqli_query($obj->con, $sql);
+                    while($data = mysqli_fetch_array($query)) 
+                    {?>
+                        <h5 class="d-block mb-3 text-muted"><?php echo $data['rating']." / 5" ?></h5>
+                    <?php
+                    }
+                ?>
             </div>
             <div class="col-6 col-md">
                 <h5>Internships</h5>
