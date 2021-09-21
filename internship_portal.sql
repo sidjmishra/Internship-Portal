@@ -110,8 +110,8 @@ CREATE TABLE `employers` (
 
 -- Add to database
 INSERT INTO `employers` (`id`, `first_name`, `last_name`, `email_id`, `password`, `company_name`, `company_url`, `mobile`, `about`, `created_at`) VALUES
-(1, 'Mahmood Hussain', 'Bhat', 'mahmoodbhat3135@gmail.com', '$2y$10$vRhugcPjv8YQNEUbKGnZH.FBSOLCPbUiLsy.crd35bfpQQwr3Jtmu', 'Demo IT Solutions', 'http://www.mahmoodhussain.in', '7780859899', 'Demo IT Solutions provide awesome services.', '2019-09-18 09:58:51'),
-(2, 'Kumail Husssain', 'Mir', 'kumailmir56@gmail.com', '$2y$10$OCnsgfr4QB13Rxp2EvZ5eeRK8uUFDb8ne/oZ9wItuOPnw..QUIcD2', 'Quantum Technologies', 'http://www.mahmoodhussain.in', '8295227747', 'Quantum Technologies is an Indian multinational technology company that specializes in Internet-related services and products, which include online advertising technologies cloud computing, software, and hardware.', '2019-09-18 11:04:02');
+(1, 'Sagar', 'Bhat', 'bhat3135@gmail.com', '$2y$10$vRhugcPjv8YQNEUbKGnZH.FBSOLCPbUiLsy.crd35bfpQQwr3Jtmu', 'Demo IT Solutions', 'http://www.sagarbhat.in', '7780059099', 'Demo IT Solutions provide awesome services.', '2020-09-18 09:58:51'),
+(2, 'Hello', 'World', 'hello@gmail.com', '$2y$10$OCnsgfr4QB13Rxp2EvZ5eeRK8uUFDb8ne/oZ9wItuOPnw..QUIcD2', 'Quantum Technologies', 'http://www.helloworld.in', '8222227747', 'Quantum Technologies is an Indian multinational technology company that specializes in Internet-related services and products, which include online advertising technologies cloud computing, software, and hardware.', '2020-09-18 11:04:02');
 
 -- --------------------------------------------------------
 
